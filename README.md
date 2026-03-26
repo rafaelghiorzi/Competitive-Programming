@@ -1,0 +1,1 @@
+This repository contains solutions to coding questions for the competitive programming class at University of Brasília (UnB). The solutions are implemented in C++ and cover a wide range of topics commonly encountered in competitive programming, such as data structures, algorithms, and problem-solving techniques.
