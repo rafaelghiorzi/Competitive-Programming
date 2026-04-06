@@ -33,33 +33,24 @@ void genprimos(){
 }
 
 void solve(){
-    int k;
-    string s;
-    vi lista(26, 0);
+    int n, a, b;
+    cin >> n >> a >> b;
 
-    cin >> k;
-    cin >> s;
-
-    for (char c : s) {
-        lista[c - 'a']++;
-    }
-
-    string final = "";
+    int a1 = n - 1;
+    int b1 = 0;
+    int res = 0;
     
-    for (int i = 0; i < 26; i++) {
-
-        if (lista[i] % k != 0) {
-            cout << -1 << endl;
-            return;
+    while (true) {
+        if (a1 < a || b1 > b) {
+            break;
         }
 
-        final += string((lista[i] / k), (i + 'a'));
-
+        a1--;
+        b1++;
+        res++;
     }
 
-    for (int i = 0; i < k; i++) {
-        cout << final;
-    }
+    cout << res << endl;
 }
 
 const bool TEST_CASES = 0;
