@@ -12,10 +12,9 @@ using ld = double;
 #define all(x) begin(x), end(x)
 #define rall(x) rbegin(x), rend(x)
 
-ll gauss(ll a){ return a*(a+1)/2; }       // Sum 1 to a
-ll teto(ll a, ll b){ return (a+b-1)/b; }  // rounded up division
+ll gauss(ll a){ return a*(a+1)/2; }
+ll teto(ll a, ll b){ return (a+b-1)/b; }
 
-// Prime numbers generator
 const int MAXN = 1e5;
 vector<int> primos;
 
@@ -33,29 +32,32 @@ void genprimos(){
 }
 
 void solve(){
+    int n;
+    cin >> n;
 
-    int a, b, c;
-    cin >> a >> b >> c;
+    vi semana(7,0);
+    for (int i = 0; i < 7; i++) {
+        cin >> semana[i];
+    }
 
-    int x, y, z;
 
-    ll root = round(sqrt(1LL * a * b * c));
+    int i = 0;
+    while (true) {
+        if (i == 7) i = 0;
 
-    x = root / a;
-    y = root / c;
-    z = root / b;
+        n -= semana[i];
+        if (n <= 0) {
+            cout << i + 1 << endl;
+            break;
+        }
 
-    int sum = 4*x + 4*y + 4*z;
-
-    cout << sum << endl;
-
+        i++;
+    }
 }
 
 const bool TEST_CASES = 0;
 
 int main(){
-    // genprimos();
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 

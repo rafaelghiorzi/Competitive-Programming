@@ -12,10 +12,9 @@ using ld = double;
 #define all(x) begin(x), end(x)
 #define rall(x) rbegin(x), rend(x)
 
-ll gauss(ll a){ return a*(a+1)/2; }       // Sum 1 to a
-ll teto(ll a, ll b){ return (a+b-1)/b; }  // rounded up division
+ll gauss(ll a){ return a*(a+1)/2; }
+ll teto(ll a, ll b){ return (a+b-1)/b; }
 
-// Prime numbers generator
 const int MAXN = 1e5;
 vector<int> primos;
 
@@ -33,29 +32,47 @@ void genprimos(){
 }
 
 void solve(){
+    int n;
+    cin >> n;
 
-    int a, b, c;
-    cin >> a >> b >> c;
+    bool check = true;
+    for (int i = 1; i < n + 1; i++) {
 
-    int x, y, z;
 
-    ll root = round(sqrt(1LL * a * b * c));
+        for (int j = 1; j < n + 1; j++) {
+            if (check) {
+                cout << "##";
+            } else {
+                cout << "..";
+            }
+            check = !check;
+        }
 
-    x = root / a;
-    y = root / c;
-    z = root / b;
+        cout << endl;
+        if (n % 2 != 0) {
+            check = !check;
+        }
 
-    int sum = 4*x + 4*y + 4*z;
+        for (int j = 1; j < n + 1; j++) {
+            if (check) {
+                cout << "##";
+            } else {
+                cout << "..";
+            }
+            check = !check;
+        }
 
-    cout << sum << endl;
+        cout << endl;
+        if (n % 2 == 0) {
+            check = !check;
+        }
+    }
 
 }
 
-const bool TEST_CASES = 0;
+const bool TEST_CASES = 1;
 
 int main(){
-    // genprimos();
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
