@@ -36,36 +36,43 @@ void solve() {
     int n, c;
     cin >> n >> c;
 
-    vi h(n);
+    if (n == 2) {
+        cout << 1 << endl;
+        return;
+    }
+
+    vector<long long> h(n);
     for (int i = 0; i < n; i++) cin >> h[i];
 
-    vi diff(n + 1, 0);
+    vector<long long> diff(n + 1, 0);
 
     for (int i = 0; i < c; i++) {
-        int m, a;
+        int m;
+        long long a;
         cin >> m >> a;
 
         diff[0] += a;
         diff[m] -= a;
     }
 
-    for (int a : diff) {
-        cout << a << " ";
-    }
-
-    cout << endl;
-
-    int cur = 0;
+    long long cur = 0;
     for (int i = 0; i < n; i++) {
         cur += diff[i];
         h[i] += cur;
     }
 
-    // só pra conferir resultado do delta encoding
-    for (int i = 0; i < n; i++) {
-        cout << h[i] << " ";
+    stack<long long> mono;
+    mono.push(h[0]);
+
+    for (int i = 1; i < n; i++) {        
+        cout << mono.size() << endl;
+
+        while (!mono.empty() && mono.top() <= h[i]) {
+            mono.pop();
+        }
+
+        mono.push(h[i]);
     }
-    cout << "\n";
 }
 
 const bool TEST_CASES = 0;
